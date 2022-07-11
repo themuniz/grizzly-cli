@@ -1,0 +1,40 @@
+{
+  "api_url": "https://ofditprojects.sps.cuny.edu/api",
+  "username": "jose.muniz",
+  "password": "NoWayJose",
+  "verify_ssl": false,
+  "data_directory": "local_data",
+  "output_filename": "cp_import.csv",
+  "processed_filename": "cp_processed.csv",
+  "output_directory": "local_data",
+  "data": {
+    "columns": [
+      "Acad Org",
+      "Session",
+      "Term",
+      "Class Stat",
+      "Subject",
+      "Catalog#",
+      "Section",
+      "Class Title",
+      "Class#",
+      "Name",
+      "Start Date",
+      "End Date",
+      "Blackboard Course ID"
+    ],
+    "acad_orgs_to_remove": [
+      "CERT-SPS",
+      "ECLD-SPS",
+      "AMNH-SPS",
+      "REG-SPS",
+      "THTR-SPS"
+    ],
+    "acad_org_transforms": {
+      "PROM-SPS": "HIM-SPS",
+      "HRL-SPS": "SOC-SPS",
+      "ILAW-SPS": "SOC-SPS",
+      "MST-SPS": "SPS-SPS"
+    }
+  }
+}
