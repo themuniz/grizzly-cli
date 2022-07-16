@@ -1,6 +1,6 @@
 import pytest
 import requests
-import cp_importer.lib.api as api
+import grizzly_cli.lib.api as api
 
 
 def test_get_token_invalid_credentials():

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""cp_importer.py
+"""grizzly-cli.py
 
-Process CUNYfirst course data and import into OFDIT database
+CLI to the Grizzly API
 José Muñiz, School of Professional Studies, CUNY
 """
 
@@ -9,21 +9,22 @@ import json
 import os
 
 import requests
-import typer
+import click
 from rich.table import Table
 from xlsx2csv import Xlsx2csv
 
 from .lib.console import console
 from .lib.process_csv import read_into_df
 
-app = typer.Typer()
 
 with open("config.json") as file:
     config = json.load(file)
 
 
-@app.command()
-def run(verify_ssl: bool = config["verify_ssl"], dry_run: bool = False):
+@click.command()
+@click.option("-v", "--verify-ssl", is_flag=True, default=config["verify_ssl"])
+@click.option("-d", "--dry-run", is_flag=True, default=False)
+def run(verify_ssl: bool, dry_run: bool):
     """
     Process CUNYfirst course data and import into OFDIT database.
 
@@ -52,8 +53,7 @@ def setup(term, year) -> str:
     if os.path.isdir(data_directory):
         console.print(f"Found the data directory at: {data_directory}")
     else:
-        raise Exception(
-            f"Could not access the data directory at {data_directory}")
+        raise Exception(f"Could not access the data directory at {data_directory}")
     return data_directory
 
 
@@ -71,8 +71,7 @@ def locate_datafile(data_directory) -> str:
 
 def convert_to_csv(excel_file):
     """Converts data file format to csv"""
-    Xlsx2csv(
-        excel_file, outputencoding="utf-8").convert(config["output_filename"])
+    Xlsx2csv(excel_file, outputencoding="utf-8").convert(config["output_filename"])
     console.print(f"Converted xlsx file to {config['output_filename']}")
     return
 
@@ -81,14 +80,12 @@ def print_stats(df):
     """Print summary stats for eyeball checks"""
     table = Table(title="Summary count")
 
-    table.add_column("Academic Org", justify="right",
-                     style="cyan", no_wrap=True)
+    table.add_column("Academic Org", justify="right", style="cyan", no_wrap=True)
     table.add_column("Session", style="magenta")
     table.add_column("Course count", justify="right", style="green")
     groups = df.groupby(["acad_org", "session"])
     for group_key, group_value in groups:
-        table.add_row(f"{group_key[0]}",
-                      f"{group_key[1]}", f"{len(group_value)}")
+        table.add_row(f"{group_key[0]}", f"{group_key[1]}", f"{len(group_value)}")
 
     console.print(table)
     console.print(f"Record count: {len(df.index)}")
