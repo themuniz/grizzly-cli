@@ -129,6 +129,23 @@ pytz = ">=2020.1"
 test = ["hypothesis (>=5.5.3)", "pytest (>=6.0)", "pytest-xdist (>=1.31)"]
 
 [[package]]
+name = "patito"
+version = "0.2.2"
+description = "A dataframe modelling library built on top of polars and pydantic."
+category = "main"
+optional = false
+python-versions = ">=3.7,<4.0"
+
+[package.dependencies]
+polars = ">=0.13.18"
+pydantic = ">=1.7.0"
+typing-extensions = "*"
+
+[package.extras]
+pandas = ["pandas"]
+duckdb = ["duckdb (>=0.3.2)", "pyarrow (>=5.0.0)"]
+
+[[package]]
 name = "pluggy"
 version = "1.0.0"
 description = "plugin and hook calling mechanisms for python"
@@ -139,6 +156,22 @@ python-versions = ">=3.6"
 [package.extras]
 dev = ["pre-commit", "tox"]
 testing = ["pytest", "pytest-benchmark"]
+
+[[package]]
+name = "polars"
+version = "0.13.54"
+description = "Blazingly fast DataFrame library"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+numpy = ["numpy (>=1.16.0)"]
+connectorx = ["connectorx"]
+xlsx2csv = ["xlsx2csv"]
+pyarrow = ["pyarrow (>=4.0)"]
+pandas = ["pyarrow (>=4.0)", "pandas"]
+fsspec = ["fsspec"]
 
 [[package]]
 name = "py"
@@ -336,7 +369,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "f384507465ca02ba3c1a839ac6b64c85cd7e99d2b678c3f27b6c5f5ec5cadec2"
+content-hash = "7addc3b298af3c8f2d43a8784d806504bdcf465aff85e3612180453b6a222625"
 
 [metadata.files]
 atomicwrites = []
@@ -426,9 +459,21 @@ pandas = [
     {file = "pandas-1.4.3-cp39-cp39-win_amd64.whl", hash = "sha256:721a3dd2f06ef942f83a819c0f3f6a648b2830b191a72bbe9451bcd49c3bd42e"},
     {file = "pandas-1.4.3.tar.gz", hash = "sha256:2ff7788468e75917574f080cd4681b27e1a7bf36461fe968b49a87b5a54d007c"},
 ]
+patito = [
+    {file = "patito-0.2.2-py3-none-any.whl", hash = "sha256:33848e25d900191911e9d2f9f020d7db52a951a9981f7c3c7b5e05054de735e0"},
+    {file = "patito-0.2.2.tar.gz", hash = "sha256:fb5a40414b994b96176d5c9e72449c0a070ef98b52f07cc3bd73f5b6b1f61483"},
+]
 pluggy = [
     {file = "pluggy-1.0.0-py2.py3-none-any.whl", hash = "sha256:74134bbf457f031a36d68416e1509f34bd5ccc019f0bcc952c7b909d06b37bd3"},
     {file = "pluggy-1.0.0.tar.gz", hash = "sha256:4224373bacce55f955a878bf9cfa763c1e360858e330072059e10bad68531159"},
+]
+polars = [
+    {file = "polars-0.13.54-cp37-abi3-macosx_10_7_x86_64.whl", hash = "sha256:f0f0546793d229f7e6d1d11ea9e1391ed8d2b8c0d57179545b412c1eb31b47da"},
+    {file = "polars-0.13.54-cp37-abi3-macosx_11_0_arm64.whl", hash = "sha256:ccc485dbcc5b8437352cf738bda340f235fb292bf1a37ba5c5675ccc7de0a0aa"},
+    {file = "polars-0.13.54-cp37-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:e7e0b9f6f2ed5f42a61d3657fb3df4a940fdd1ca5faa42b54b15eb06e42bc687"},
+    {file = "polars-0.13.54-cp37-abi3-manylinux_2_24_aarch64.whl", hash = "sha256:2f601937271c2358fdbe0cb340a90f63b8b71aed211dbd90b14935749fb70944"},
+    {file = "polars-0.13.54-cp37-abi3-win_amd64.whl", hash = "sha256:80f736340c56d02bc767275cb9db72e684d202515384a6ca44d628d1b551d307"},
+    {file = "polars-0.13.54.tar.gz", hash = "sha256:8af5976563f9650cc20da1fa24a246e754d3c6f3e9979fd2074c0fe02103781e"},
 ]
 py = [
     {file = "py-1.11.0-py2.py3-none-any.whl", hash = "sha256:607c53218732647dff4acdfcd50cb62615cedf612e72d1724fb1a0cc6405b378"},

@@ -8,6 +8,7 @@ José Muñiz, School of Professional Studies, CUNY
 import json
 import os
 
+import polars as pl
 import requests
 import click
 from rich.table import Table
@@ -92,4 +93,4 @@ def print_stats(df):
 
 
 if __name__ == "__main__":
-    app()
+    run()
