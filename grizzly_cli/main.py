@@ -18,6 +18,12 @@ from .lib.console import console
 from .lib.process_csv import read_into_df
 
 
+APP_NAME = "Grizzly"
+
+def read_config():
+    cfg = os.path.join(click.get_app_dir(APP_NAME), 'config.toml')
+    return cfg
+
 with open("config.json") as file:
     config = json.load(file)
 

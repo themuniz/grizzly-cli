@@ -1,0 +1,8 @@
+[settings]
+verify_ssl = false
+data_directory = "testing/local_data/"
+output_directory = "testing/output/"
+
+[user]
+username = "jose.muniz"
+password = "Sartre4020!"

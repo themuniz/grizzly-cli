@@ -1,7 +1,5 @@
 {
   "api_url": "https://ofditprojects.sps.cuny.edu/api",
-  "username": "jose.muniz",
-  "password": "NoWayJose",
   "verify_ssl": false,
   "data_directory": "local_data",
   "output_filename": "cp_import.csv",
